@@ -1,10 +1,14 @@
 import express from "express";
+import pool from "./config/db.js";
+    
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
-app.get("/", (req, res) => {
-  res.send("¡Hola, mundo!").status(200);
+app.get("/", async (req, res) => {
+  const [row] = await pool.query("SELECT 1 + 1 AS result");
+  res.send(`¡Hola Mundo! La hora del servidor es: ${row[0].result}`).status(200);
 });
 
 app.get("/users", (req, res) => {
