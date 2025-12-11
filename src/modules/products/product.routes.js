@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { getProductsController, getProductController, createProductController, updateProductController, deleteProductController } from './product.controller.js'
-import { authMiddleware } from '../../middlewares/authMiddleware.js'
+import { verifyToken as authMiddleware } from '../../middlewares/authMiddleware.js'
 
 const router = Router()
 

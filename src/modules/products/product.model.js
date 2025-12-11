@@ -1,5 +1,5 @@
 
-import { pool } from '../../config/db.js'
+import pool from '../../config/db.js'
 
 export const getProducts = async () => {
   const [rows] = await pool.query('SELECT * FROM products WHERE deleted_at IS NULL')
