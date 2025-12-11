@@ -8,7 +8,7 @@ import rateLimit from "express-rate-limit";
 // Rutas
 import authRoutes from "./modules/auth/auth.routes.js";
 import userRoutes from "./modules/users/user.routes.js";
-import pokemonRoutes from "./modules/pokemons/pokemon.routes.js";
+import productRoutes from "./modules/products/product.routes.js";
 
 dotenv.config();
 
@@ -39,7 +39,7 @@ app.use(generalLimiter);
 // Rutas con rate limiters específicos
 app.use("/auth", authLimiter, authRoutes);
 app.use(userRoutes);
-app.use(pokemonRoutes);
+app.use("/products", productRoutes);
 
 app.use((err, req, res, next) => {
   console.error("🔥 Server Error:", err);
